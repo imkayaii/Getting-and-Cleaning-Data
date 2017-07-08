@@ -1,28 +1,7 @@
----
-title: "Getting and Cleaning Data Assignment"
-output: html_document
----
+## Set working directory to where "UCI HAR Dataset" folder is.
+## Install "data.table" and "dplyr" packages if not already done so
 
-The objective of this assignment is to clean and extract usable data from the zip file that is available at https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip. A full description is available at the site where the data was obtained:
-http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones. 
-
-The goal is to prepare a tidy data that can be used for later analysis, and a R script called run_analysis.R is created that does the following:
-- Merges the training and the test sets to create one data set
-- Extracts only the measurements on the mean and standard deviation for each measurement
-- Uses descriptive activity names to name the activities in the data set
-- Appropriately labels the data set with descriptive variable names
-- From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject
-
-Four items are found in this repository:
-- run_analysis.R : a R-code run on the data set
-- TidyData.txt : a tidy data created from the original data using run_analysis.R
-- CodeBook.md : a CodeBook reference to the variables in TidyData.txt
-- README.md : an analysis of the code in run_analysis.R
-
-
-Getting Started
-  ## Set working directory to where "UCI HAR Dataset" folder is.
-  ## Install "data.table" and "dplyr" packages if not already done so
+run_analysis <- function(){
 
 	## Load the packages
 	library(data.table)
@@ -87,3 +66,4 @@ Getting Started
 	tidy_data <- tidy_data[order(tidy_data$SubjectID, tidy_data$ActivityID),]
 	write.table(tidy_data, file = "TidyData.txt", row.names = FALSE)
 
+}
